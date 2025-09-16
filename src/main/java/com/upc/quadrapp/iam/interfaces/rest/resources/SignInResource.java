@@ -1,4 +1,4 @@
 package com.upc.quadrapp.iam.interfaces.rest.resources;
 
-public class SignInResource {
+public record SignInResource(String username, String password) {
 }

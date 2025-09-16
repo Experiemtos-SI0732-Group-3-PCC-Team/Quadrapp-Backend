@@ -1,4 +1,4 @@
 package com.upc.quadrapp.iam.domain.model.commands;
 
-public class SignInCommand {
+public record SignInCommand(String username, String password) {
 }

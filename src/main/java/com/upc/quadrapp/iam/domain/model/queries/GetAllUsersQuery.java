@@ -1,4 +1,4 @@
 package com.upc.quadrapp.iam.domain.model.queries;
 
-public class GetAllUsersQuery {
+public record GetAllUsersQuery() {
 }

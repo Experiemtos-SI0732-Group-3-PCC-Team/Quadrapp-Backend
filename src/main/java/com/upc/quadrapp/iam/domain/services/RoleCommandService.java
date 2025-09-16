@@ -1,4 +1,7 @@
 package com.upc.quadrapp.iam.domain.services;
 
-public class RoleCommandService {
+import com.upc.quadrapp.iam.domain.model.commands.SeedRolesCommand;
+
+public interface RoleCommandService {
+    void handle(SeedRolesCommand command);
 }

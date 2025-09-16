@@ -1,4 +1,6 @@
 package com.upc.quadrapp.iam.application.internal.outboundservices.hashing;
 
-public class HashingService {
+public interface HashingService {
+    String encode(CharSequence rawPassword);
+    boolean matches(CharSequence rawPassword, String encodedPassword);
 }
