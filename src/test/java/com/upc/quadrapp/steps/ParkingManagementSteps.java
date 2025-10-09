@@ -42,9 +42,4 @@ public class ParkingManagementSteps {
     public void the_response_should_have_status_code(int status) {
         response.then().statusCode(status);
     }
-
-    @And("the body should contain {string}")
-    public void the_body_should_contain(String bodyText) {
-        response.then().body(containsString(bodyText));
-    }
 }
