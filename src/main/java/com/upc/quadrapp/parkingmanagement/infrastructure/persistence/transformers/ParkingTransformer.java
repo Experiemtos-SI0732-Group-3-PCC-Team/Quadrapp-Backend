@@ -55,7 +55,7 @@ public class ParkingTransformer {
                     s.getLabel()
             );
             spot.setAvailability(s.isAvailable());
-            manager.updateParkingSpot(spot);
+            manager.loadParkingSpot(spot);
         }
 
         return new Parking(

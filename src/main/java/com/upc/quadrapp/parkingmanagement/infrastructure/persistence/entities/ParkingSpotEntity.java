@@ -1,6 +1,8 @@
 package com.upc.quadrapp.parkingmanagement.infrastructure.persistence.entities;
 
 import jakarta.persistence.*;
+import lombok.Setter;
+
 import java.util.UUID;
 
 @Entity
@@ -8,14 +10,20 @@ import java.util.UUID;
 public class ParkingSpotEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(columnDefinition = "BINARY(16)")
+    @Setter
     private UUID id;
 
+    @Setter
     private boolean available;
+    @Setter
     private Integer rowIndex;
+    @Setter
     private Integer columnIndex;
+    @Setter
     private String label;
 
+    @Setter
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parking_id")
     private ParkingEntity parking;
@@ -23,20 +31,14 @@ public class ParkingSpotEntity {
     public ParkingSpotEntity() { }
 
     public UUID getId() { return id; }
-    public void setId(UUID id) { this.id = id; }
 
     public boolean isAvailable() { return available; }
-    public void setAvailable(boolean available) { this.available = available; }
 
     public Integer getRowIndex() { return rowIndex; }
-    public void setRowIndex(Integer rowIndex) { this.rowIndex = rowIndex; }
 
     public Integer getColumnIndex() { return columnIndex; }
-    public void setColumnIndex(Integer columnIndex) { this.columnIndex = columnIndex; }
 
     public String getLabel() { return label; }
-    public void setLabel(String label) { this.label = label; }
 
     public ParkingEntity getParking() { return parking; }
-    public void setParking(ParkingEntity parking) { this.parking = parking; }
 }

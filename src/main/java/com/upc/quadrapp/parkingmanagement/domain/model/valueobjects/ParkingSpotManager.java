@@ -15,6 +15,10 @@ public class ParkingSpotManager {
         parkingSpots.add(spot);
     }
 
+    public void loadParkingSpot(ParkingSpot spot) {
+        parkingSpots.add(spot);
+    }
+
     public List<ParkingSpot> getParkingSpots() {
         return Collections.unmodifiableList(parkingSpots);
     }

@@ -5,6 +5,7 @@ import com.upc.quadrapp.parkingmanagement.domain.model.commands.AddParkingSpotCo
 import com.upc.quadrapp.parkingmanagement.domain.model.commands.CreateParkingCommand;
 import com.upc.quadrapp.parkingmanagement.domain.model.commands.UpdateParkingAvailabilityCommand;
 import com.upc.quadrapp.parkingmanagement.interfaces.dto.ParkingDto;
+import com.upc.quadrapp.parkingmanagement.interfaces.transformers.AddParkingSpotRequest;
 import com.upc.quadrapp.parkingmanagement.interfaces.transformers.ParkingDtoTransformer;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,12 +32,16 @@ public class ParkingController {
     }
 
     @PostMapping("/{parkingId}/spots")
-    public ResponseEntity<Void> addSpot(@PathVariable Long parkingId, @RequestBody Map<String, Object> payload) {
+    public ResponseEntity<Void> addSpot(
+            @PathVariable Long parkingId,
+            @RequestBody
+            AddParkingSpotRequest request
+    ) {
         AddParkingSpotCommand cmd = new AddParkingSpotCommand(
                 parkingId,
-                (Integer) payload.get("row"),
-                (Integer) payload.get("column"),
-                (String) payload.get("label")
+                request.getRow(),
+                request.getColumn(),
+                request.getLabel()
         );
         parkingService.addParkingSpot(cmd);
         return ResponseEntity.ok().build();
