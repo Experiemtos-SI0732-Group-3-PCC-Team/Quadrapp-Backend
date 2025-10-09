@@ -1,5 +1,5 @@
 # ---------- Build ----------
-FROM eclipse-temurin:21-jdk AS builder
+FROM maven:3.9.3-eclipse-temurin-21 AS builder
 
 WORKDIR /app
 
