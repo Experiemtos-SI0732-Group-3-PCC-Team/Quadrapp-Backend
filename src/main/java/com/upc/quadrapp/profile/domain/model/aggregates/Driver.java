@@ -57,11 +57,13 @@ public class Driver {
     @NotNull
     @NotBlank
     @Column(nullable = false)
+    @Getter
     private Date createdAt;
 
     @NotNull
     @NotBlank
     @Column(nullable = false)
+    @Getter
     private Date updatedAt;
 
     public Driver() {}

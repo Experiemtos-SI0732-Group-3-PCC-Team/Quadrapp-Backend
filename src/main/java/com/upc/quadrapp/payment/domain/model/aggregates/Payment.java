@@ -54,11 +54,11 @@ public class Payment {
     }
 
     public boolean isForSubscription() {
-        return reservationPayment != null;
+        return subscriptionPayment != null;
     }
 
     public boolean isForReservation() {
-        return subscriptionPayment != null;
+        return reservationPayment != null;
     }
 
 }

@@ -60,11 +60,13 @@ public class ParkingOwner {
     @Column(nullable = false)
     private Long userId;
 
+    @Getter
     @NotNull
     @NotBlank
     @Column(nullable = false)
     private Date createdAt;
 
+    @Getter
     @NotNull
     @NotBlank
     @Column(nullable = false)
