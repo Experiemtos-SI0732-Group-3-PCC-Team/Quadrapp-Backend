@@ -17,7 +17,7 @@ class UserTest {
     @DisplayName("Debería agregar un rol único al usuario")
     void shouldAddSingleRole_whenValidRoleProvided() {
         // Arrange
-        User user = new User("leonardo", "123456");
+        User user = new User("leonardo@example.com", "123456", "Leonardo", "Perez", true);
         Role adminRole = new Role(Roles.ROLE_ADMIN);
 
         // Act
@@ -33,7 +33,7 @@ class UserTest {
     @DisplayName("Debería agregar múltiples roles al usuario")
     void shouldAddMultipleRoles_whenListProvided() {
         // Arrange
-        User user = new User("martin", "password123");
+        User user = new User("martin@example.com", "password123", "Martin", "Garcia", true);
         List<Role> roles = List.of(
                 new Role(Roles.ROLE_USER),
                 new Role(Roles.ROLE_DRIVER)
@@ -53,7 +53,7 @@ class UserTest {
     @DisplayName("Debería asignar el rol por defecto ROLE_USER si la lista está vacía")
     void shouldAssignDefaultRole_whenEmptyListProvided() {
         // Arrange
-        User user = new User("andrea", "securepass");
+        User user = new User("andrea@example.com", "securepass", "Andrea", "Lopez", true);
 
         // Act
         user.addRoles(List.of());
@@ -74,7 +74,7 @@ class UserTest {
         );
 
         // Act
-        User user = new User("sofia", "pass", initialRoles);
+        User user = new User("sofia@example.com", "pass", "Sofia", "Martinez", true, initialRoles);
 
         // Assert
         assertEquals(2, user.getRoles().size());
@@ -86,7 +86,7 @@ class UserTest {
     @DisplayName("Debería asignar el rol por defecto cuando la lista inicial es nula")
     void shouldAssignDefaultRole_whenConstructorListIsNull() {
         // Act
-        User user = new User("jorge", "clave", null);
+        User user = new User("jorge@example.com", "clave", "Jorge", "Ramirez", true, null);
 
         // Assert
         assertEquals(1, user.getRoles().size());

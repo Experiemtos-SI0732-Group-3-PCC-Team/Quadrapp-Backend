@@ -78,6 +78,26 @@ public class TokenServiceImpl implements BearerTokenService {
         return extractClaim(token, Claims::getSubject);
     }
 
+    @Override
+    public String generateRefreshToken(String username) {
+        // Refresh token con mayor duración (7 veces el tiempo de expiración del access token)
+        var issuedAt = new Date();
+        var expiration = DateUtils.addDays(issuedAt, expirationDays * 7);
+        var key = getSigningKey();
+        return Jwts.builder()
+                .subject(username)
+                .issuedAt(issuedAt)
+                .expiration(expiration)
+                .signWith(key)
+                .compact();
+    }
+
+    @Override
+    public int getExpirationTime() {
+        // Retorna el tiempo de expiración en segundos
+        return expirationDays * 24 * 60 * 60;
+    }
+
     // Private methods
     private String buildTokenWithDefaultParameters(String username) {
         var issuedAt = new Date();

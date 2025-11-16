@@ -29,6 +29,9 @@ public class ParkingTransformer {
         entity.setTotalRows(parking.getTotalSpots());
         entity.setTotalColumns(parking.getTotalSpots());
         entity.setImageUrl(parking.getImageUrl());
+        entity.setLocation(parking.getLocation());
+        entity.setPricing(parking.getPricing());
+        entity.setFeatures(parking.getFeatures());
 
         List<ParkingSpotEntity> spots = new ArrayList<>();
         for (ParkingSpot spot : parking.getParkingSpots()) {
@@ -73,7 +76,10 @@ public class ParkingTransformer {
                 manager,
                 entity.getTotalSpots(),
                 entity.getAvailableSpots(),
-                entity.getRating()
+                entity.getRating(),
+                entity.getLocation(),
+                entity.getPricing(),
+                entity.getFeatures()
         );
     }
 }

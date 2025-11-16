@@ -23,7 +23,10 @@ public class ParkingDtoTransformer {
                 dto.ratePerHour,
                 dto.totalRows,
                 dto.totalColumns,
-                dto.imageUrl
+                dto.imageUrl,
+                dto.location,
+                dto.pricing,
+                dto.features
         );
     }
 
@@ -43,6 +46,9 @@ public class ParkingDtoTransformer {
         dto.spots = parking.getParkingSpots().stream()
                 .map(this::toSpotDto)
                 .collect(Collectors.toList());
+        dto.location = parking.getLocation();
+        dto.pricing = parking.getPricing();
+        dto.features = parking.getFeatures();
         return dto;
     }
 

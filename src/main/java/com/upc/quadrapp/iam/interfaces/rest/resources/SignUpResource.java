@@ -1,6 +1,11 @@
 package com.upc.quadrapp.iam.interfaces.rest.resources;
 
-import java.util.List;
-
-public record SignUpResource(String username, String password, List<String> roles) {
+public record SignUpResource(
+    String email,
+    String password,
+    String firstName,
+    String lastName,
+    Boolean acceptTerms,
+    String role  // opcional: "owner" o null
+) {
 }

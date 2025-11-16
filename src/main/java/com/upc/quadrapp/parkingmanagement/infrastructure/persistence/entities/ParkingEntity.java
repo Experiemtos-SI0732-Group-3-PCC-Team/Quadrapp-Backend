@@ -1,5 +1,8 @@
 package com.upc.quadrapp.parkingmanagement.infrastructure.persistence.entities;
 
+import com.upc.quadrapp.parkingmanagement.domain.model.valueobjects.FeaturesData;
+import com.upc.quadrapp.parkingmanagement.domain.model.valueobjects.LocationData;
+import com.upc.quadrapp.parkingmanagement.domain.model.valueobjects.PricingData;
 import jakarta.persistence.*;
 import java.util.*;
 
@@ -24,6 +27,15 @@ public class ParkingEntity {
     private Integer totalRows;
     private Integer totalColumns;
     private String imageUrl;
+
+    @Embedded
+    private LocationData location;
+
+    @Embedded
+    private PricingData pricing;
+
+    @Embedded
+    private FeaturesData features;
 
     @OneToMany(mappedBy = "parking", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<ParkingSpotEntity> parkingSpots = new ArrayList<>();
@@ -71,6 +83,15 @@ public class ParkingEntity {
 
     public String getImageUrl() { return imageUrl; }
     public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
+
+    public LocationData getLocation() { return location; }
+    public void setLocation(LocationData location) { this.location = location; }
+
+    public PricingData getPricing() { return pricing; }
+    public void setPricing(PricingData pricing) { this.pricing = pricing; }
+
+    public FeaturesData getFeatures() { return features; }
+    public void setFeatures(FeaturesData features) { this.features = features; }
 
     public List<ParkingSpotEntity> getParkingSpots() { return parkingSpots; }
     public void setParkingSpots(List<ParkingSpotEntity> parkingSpots) { this.parkingSpots = parkingSpots; }
